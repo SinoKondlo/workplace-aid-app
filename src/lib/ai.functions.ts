@@ -52,7 +52,7 @@ export const summarizeNotes = createServerFn({ method: "POST" })
 
     try {
       const result = streamText({
-        model: getGatewayModel(),
+        model: getGatewayModel({ structuredOutputs: true }),
         system:
           "You summarize meeting notes for busy professionals. Be concise and factual. Only include items that are actually supported by the notes; use empty arrays when nothing applies. Keep the summary under 120 words. Each list item should be one short line; include the owner and date when the notes mention them.",
         prompt: `Meeting notes:\n\n${data.notes}`,
@@ -89,7 +89,7 @@ export const planTasks = createServerFn({ method: "POST" })
 
     try {
       const result = streamText({
-        model: getGatewayModel(),
+        model: getGatewayModel({ structuredOutputs: true }),
         system:
           "You are a realistic productivity planner. Build an achievable schedule that fits strictly within the available time, includes short breaks, and orders work by priority and energy. 'period' is the day label (e.g. 'Today' or 'Monday'), 'time' is a clock range (e.g. '09:00 - 10:30'). Do not overload the schedule.",
         prompt: `Plan horizon: ${data.horizon}\nAvailable time: ${data.availableTime}\nPriorities: ${data.priorities || "not specified"}\nTasks:\n${data.tasks}`,
