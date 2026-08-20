@@ -1,74 +1,109 @@
-# AI Workplace Companion
+# AI Workplace Productivity Assistant
 
-Build a modern responsive web app called “AI Workplace Productivity Assistant”.
+A modern, responsive SaaS-style dashboard that helps you write emails, summarize meetings, and plan your day with AI.
 
-Create a professional SaaS-style dashboard with a left sidebar and these 3 core AI tools:
+Built with **TanStack Start**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Lovable AI**.
 
-1. Smart Email Generator
+![Built with Lovable](https://lovable.dev/badge)
 
-- User enters the purpose, recipient, key points and selects a tone: Formal, Friendly or Persuasive.
+---
 
-- Generate a clear professional email.
+## Features
 
-- Allow the generated email to be edited and copied.
+- **Dashboard home** — quick navigation and overview of all productivity tools.
+- **Smart Email Generator** — enter a purpose, recipient, key points, and tone (Formal, Friendly, Persuasive) to get a polished, professional email.
+- **Meeting Notes Summarizer** — paste raw notes and extract a clean summary, action items, decisions, and deadlines.
+- **AI Task Planner** — input tasks, priorities, and available time to generate a realistic, prioritized schedule.
+- **Responsive design** — works on desktop, tablet, and mobile with a collapsible sidebar.
+- **Loading states, error handling, editable output, and copy-to-clipboard** for a smooth user experience.
+- **Responsible AI disclaimer** — visible throughout the app to remind users that AI output should be reviewed before use.
 
-2. Meeting Notes Summarizer
+---
 
-- User pastes meeting notes.
+## Tech Stack
 
-- Generate a concise summary.
+- [TanStack Start](https://tanstack.com/start/) — full-stack React framework with server functions.
+- [TanStack Router](https://tanstack.com/router/) — file-based routing.
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/) — accessible UI components.
+- [AI SDK](https://sdk.vercel.ai/) — typed AI model integration.
+- [Lovable AI Gateway](https://docs.lovable.dev/features/ai) — powers the AI features.
+- [Zod](https://zod.dev/) — schema validation.
 
-- Extract Action Items, Decisions and Deadlines into separate sections.
+---
 
-- Make the output editable and copyable.
+## Getting Started
 
-3. AI Task Planner
+### Prerequisites
 
-- User enters their tasks, priorities and available time.
+- Node.js (v20 or newer)
+- [bun](https://bun.sh/) or npm
 
-- Generate a realistic daily or weekly schedule.
+### Install
 
-- Prioritize tasks and display them in an easy-to-read schedule.
-
-Requirements:
-
-- Dashboard home page with quick access to all 3 tools.
-
-- Sidebar navigation.
-
-- Clean, modern and professional UI.
-
-- Responsive on desktop and mobile.
-
-- Clear input and output sections for every tool.
-
-- Use Lovable AI for AI-generated responses where available.
-
-- Include loading states and basic error handling.
-
-- Include a visible Responsible AI disclaimer stating that AI-generated content should be reviewed by the user before use.
-
-- Keep the app simple, functional and presentation-ready. Do not add unnecessary features, authentication, payments or complex database functionality.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://workplace-aid-app.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/31c35ad8-503c-490d-bab0-9e6dd7d9ebb2).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
+```bash
+git clone <repository-url>
 cd <repository-name>
-npm i
-npm run dev
+bun install
+# or npm install
 ```
+
+### Development
+
+```bash
+bun dev
+# or npm run dev
+```
+
+Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+### Build
+
+```bash
+bun run build
+# or npm run build
+```
+
+---
+
+## Project Structure
+
+```
+src/
+  components/        # Shared UI components (sidebar, page header, tool output)
+  lib/               # Server functions and AI gateway provider
+  routes/            # TanStack Start routes
+    index.tsx        # Dashboard home
+    email.tsx        # Smart Email Generator
+    notes.tsx        # Meeting Notes Summarizer
+    planner.tsx      # AI Task Planner
+    __root.tsx       # Root layout with sidebar and Toaster
+  styles.css         # Tailwind v4 theme tokens and design system
+```
+
+---
+
+## AI Features
+
+AI calls are handled by server functions in `src/lib/ai.functions.ts` and powered by **Lovable AI Gateway** through the AI SDK.
+
+- **Email generation** uses streaming text generation for a fast, natural drafting experience.
+- **Meeting notes summarization** and **task planning** use structured output (Zod schemas) to return consistent, actionable results.
+
+All AI features are gated with loading states and clear error handling.
+
+---
+
+## Responsible AI
+
+This app includes a visible **Responsible AI** disclaimer. AI-generated content is meant to assist, not replace, human judgment. Always review generated emails, summaries, and schedules before sharing or acting on them.
+
+---
+
+## License
+
+This project is built and owned by you. Feel free to modify, deploy, and share it.
+
+Built with [Lovable](https://lovable.dev).
